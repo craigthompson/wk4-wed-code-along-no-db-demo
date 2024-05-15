@@ -16,7 +16,7 @@ table td:nth-child(2) input[type="text"] {
 }
 
 table td:nth-child(1) {
-  width: 110px;
+  width: 200px;
 }
 
 input[type="text"] {

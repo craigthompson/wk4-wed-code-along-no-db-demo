@@ -1,11 +1,11 @@
 import React from "react";
 
-const AddButton = () => {
+const AddButton = ({ addInvoiceRow }) => {
   return (
     <tr>
       <td></td>
       <td colSpan={10}>
-        <button>Add</button>
+        <button onClick={addInvoiceRow}>Add</button>
       </td>
     </tr>
   );

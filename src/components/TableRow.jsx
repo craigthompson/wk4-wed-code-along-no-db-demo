@@ -10,6 +10,9 @@ const TableRow = ({
   initialDescription,
   initialRate,
   initialHours,
+  deleteInvoiceRow,
+  editInvoiceRow,
+  id,
 }) => {
   const [isEditing, setIsEditing] = useState(initialIsEditing);
   const [description, setDescription] = useState(initialDescription);
@@ -17,7 +20,17 @@ const TableRow = ({
   const [hours, setHours] = useState(initialHours);
 
   const setEditMode = () => setIsEditing(true);
-  const setNormalMode = () => setIsEditing(false);
+  const setNormalMode = () => {
+    setIsEditing(false);
+
+    const editedRow = {
+      id: id,
+      description: description,
+      rate: rate,
+      hours: hours,
+    };
+    editInvoiceRow(id, editedRow);
+  };
 
   return (
     <tr>
@@ -25,10 +38,15 @@ const TableRow = ({
         isEditing={isEditing}
         setEditMode={setEditMode}
         setNormalMode={setNormalMode}
+        deleteInvoiceRow={deleteInvoiceRow}
       />
-      <Description isEditing={isEditing} value={description} />
-      <Rate isEditing={isEditing} value={rate} />
-      <Hours isEditing={isEditing} value={hours} />
+      <Description
+        isEditing={isEditing}
+        value={description}
+        setDescription={setDescription}
+      />
+      <Rate isEditing={isEditing} value={rate} setRate={setRate} />
+      <Hours isEditing={isEditing} value={hours} setHours={setHours} />
       <td>{formatCurrency(rate * hours)}</td>
     </tr>
   );

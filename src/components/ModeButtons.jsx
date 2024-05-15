@@ -1,6 +1,11 @@
 import React from "react";
 
-const ModeButtons = ({ isEditing, setEditMode, setNormalMode }) => {
+const ModeButtons = ({
+  isEditing,
+  setEditMode,
+  setNormalMode,
+  deleteInvoiceRow,
+}) => {
   if (isEditing) {
     return (
       <td>
@@ -10,7 +15,7 @@ const ModeButtons = ({ isEditing, setEditMode, setNormalMode }) => {
   } else {
     return (
       <td>
-        <button>Delete</button>
+        <button onClick={deleteInvoiceRow}>Delete</button>
         <button onClick={setEditMode}>Edit</button>
       </td>
     );
