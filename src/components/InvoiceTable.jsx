@@ -1,7 +1,7 @@
 import TableRow from "./TableRow";
 import TableHeader from "./TableHeader";
 import AddButton from "./AddButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./InvoiceTable.css";
 
 const initialData = [
@@ -37,7 +37,6 @@ const InvoiceTable = () => {
   };
 
   const editInvoiceRow = (id, body) => {
-    //
     console.log("Row with id:", id);
     console.log("body object:", body);
 
@@ -62,6 +61,10 @@ const InvoiceTable = () => {
       id={el.id}
     />
   ));
+
+  useEffect(() => {
+    console.log("Use effect");
+  }, [editInvoiceRow]);
 
   return (
     <table>
